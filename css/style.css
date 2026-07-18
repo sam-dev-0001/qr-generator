@@ -61,8 +61,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('..assets/fonts/inter/inter-v20-latin-regular.woff2') format('woff2'),
-       url('..assets/fonts/inter/inter-v20-latin-regular.woff') format('woff');
+  src: url('../assets/fonts/inter/inter-v20-latin-regular.woff2') format('woff2'),
+       url('../assets/fonts/inter/inter-v20-latin-regular.woff') format('woff');
 }
 
 @font-face {
@@ -70,8 +70,8 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('..assets/fonts/inter/inter-v20-latin-500.woff2') format('woff2'),
-       url('..assets/fonts/inter/inter-v20-latin-500.woff') format('woff');
+  src: url('../assets/fonts/inter/inter-v20-latin-500.woff2') format('woff2'),
+       url('../assets/fonts/inter/inter-v20-latin-500.woff') format('woff');
 }
 
 @font-face {
@@ -79,8 +79,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('..assets/fonts/inter/inter-v20-latin-600.woff2') format('woff2'),
-       url('..assets/fonts/inter/inter-v20-latin-600.woff') format('woff');
+  src: url('../assets/fonts/inter/inter-v20-latin-600.woff2') format('woff2'),
+       url('../assets/fonts/inter/inter-v20-latin-600.woff') format('woff');
 }
 
 @font-face {
@@ -88,8 +88,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('..assets/fonts/inter/inter-v20-latin-700.woff2') format('woff2'),
-       url('..assets/fonts/inter/inter-v20-latin-700.woff') format('woff');
+  src: url('../assets/fonts/inter/inter-v20-latin-700.woff2') format('woff2'),
+       url('../assets/fonts/inter/inter-v20-latin-700.woff') format('woff');
 }
 
 /* ===== SPACE MONO FONTS ===== */
@@ -98,8 +98,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('..assets/fonts/space-mono/space-mono-v17-latin-regular.woff2') format('woff2'),
-       url('..assets/fonts/space-mono/space-mono-v17-latin-regular.woff') format('woff');
+  src: url('../assets/fonts/space-mono/space-mono-v17-latin-regular.woff2') format('woff2'),
+       url('../assets/fonts/space-mono/space-mono-v17-latin-regular.woff') format('woff');
 }
 
 @font-face {
@@ -107,8 +107,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('..assets/fonts/space-mono/space-mono-v17-latin-700.woff2') format('woff2'),
-       url('..assets/fonts/space-mono/space-mono-v17-latin-700.woff') format('woff');
+  src: url('../assets/fonts/space-mono/space-mono-v17-latin-700.woff2') format('woff2'),
+       url('../assets/fonts/space-mono/space-mono-v17-latin-700.woff') format('woff');
 }
 
 /* ===== APPLY FONTS ===== */
