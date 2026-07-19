@@ -1,5 +1,5 @@
 {
-  "name": "QR Generator Pro",
+  "name": "QRGenPro",
   "short_name": "QRGenPro",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#0f172a",
+  "theme_color": "#14213D",
   "background_color": "#ffffff",
   "display": "standalone"
 }
