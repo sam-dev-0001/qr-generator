@@ -1,0 +1,8 @@
+# ads.txt — Authorized Digital Sellers
+# Placeholder file. Once approved for Google AdSense, replace
+# pub-0000000000000000 below with your actual AdSense publisher ID
+# (found in AdSense under Account > Account information).
+#
+# Format reference: https://iabtechlab.com/ads-txt/
+#
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

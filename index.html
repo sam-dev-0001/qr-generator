@@ -8,6 +8,7 @@
       name="description"
       content="Generate and style custom QR codes for URLs, text, email, phone, SMS and Wi-Fi. Add a logo, pick colors and shapes, then download as PNG, JPEG or SVG. Free, private, runs in your browser."
     />
+    <meta name="keywords" content="QR code generator, free QR generator, custom QR code, WiFi QR code, URL QR code, QR code maker, QR generator online">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://qrgenpro.pages.dev/" />
@@ -27,6 +28,9 @@
       property="og:image"
       content="https://qrgenpro.pages.dev/assets/images/og-cover.png"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="QRGenPro" />
 
     <!-- Twitter Card -->
@@ -46,6 +50,10 @@
 
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="author" content="QRGenPro">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="QRGenPro" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Favicons -->
     <link rel="icon" href="/assets/icons/favicon.ico" sizes="any" />
@@ -62,14 +70,23 @@
       href="/assets/icons/favicon-16x16.png"
     />
     <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
-    <link rel="manifest" href="/assets/icons/site.webmanifest" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#14213D" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
     <meta name="theme-color" content="#14213D" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF8F3">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14213D">
+
+    <!-- Preload the fonts used above the fold (H1 = Space Mono, body = Inter)
+         to avoid layout shift / late text repaint and help LCP. -->
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter/inter-v20-latin-regular.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-mono/space-mono-v17-latin-700.woff2" crossorigin />
 
     <!-- W3.CSS -->
-    <link rel="stylesheet" href="css/w3.css" />
+    <link rel="stylesheet" href="/css/w3.css" />
 
     <!-- App styles -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 
     <script type="application/ld+json">
       {
@@ -79,22 +96,51 @@
         "url": "https://qrgenpro.pages.dev/",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Any",
-        "description": "Free QR Code Generator that runs entirely in your browser.",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Free QR Code Generator that runs entirely in your browser. Create text, URL, email, phone, SMS and Wi-Fi QR codes with custom colors, shapes and a logo.",
+        "isAccessibleForFree": true,
         "offers": {
           "@type": "Offer",
-          "price": "0"
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Text QR codes",
+          "URL QR codes",
+          "Email QR codes",
+          "Phone QR codes",
+          "SMS QR codes",
+          "Wi-Fi QR codes",
+          "Custom colors and dot shapes",
+          "Logo overlay",
+          "PNG, JPEG and SVG export"
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "QRGenPro",
+        "url": "https://qrgenpro.pages.dev/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://qrgenpro.pages.dev/qr-code-types/",
+          "query-input": "required name=search_term_string"
         }
       }
     </script>
 
     <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"QRGenPro",
-  "url":"https://qrgenpro.pages.dev/"
-}
-</script>
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "QRGenPro",
+        "url": "https://qrgenpro.pages.dev/",
+        "logo": "https://qrgenpro.pages.dev/assets/icons/icon-512.png"
+      }
+    </script>
   </head>
 
   <body>
@@ -129,9 +175,10 @@
         </a>
 
         <nav class="header-nav" aria-label="Primary">
-          <!-- <a href="#builder">Builder</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a> -->
+          <a href="#builder">Builder</a>
+          <a href="/qr-code-types/">QR&nbsp;Types</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="/about.html">About</a>
         </nav>
 
         <div class="header-actions">
@@ -180,14 +227,14 @@
       <section class="hero" aria-labelledby="hero-heading">
         <div class="hero-inner">
           <div class="hero-copy">
-            <!-- <p class="eyebrow">Free &middot; Private &middot; Runs entirely in your browser</p> -->
+            <p class="eyebrow">Free &middot; Private &middot; Runs entirely in your browser</p>
             <h1 id="hero-heading">Make codes people<br />actually scan.</h1>
             <p class="hero-sub">
               Type your content, style the dots, drop in a logo, and export a
               print-ready QR code. Nothing leaves your device.
             </p>
             <div class="hero-cta">
-              <!-- <a href="#builder" class="w3-button btn-primary">Start building</a> -->
+              <a href="#builder" class="w3-button btn-primary">Start building</a>
               <a href="#how-it-works" class="w3-button btn-ghost"
                 >How it works</a
               >
@@ -754,12 +801,34 @@
           </div>
         </div>
       </section>
+
+      <!-- ============ QR TYPES INTERNAL LINKS ============ -->
+      <section class="how" aria-labelledby="types-heading" style="padding-top:0;">
+        <h2 id="types-heading">Every QR code type, explained</h2>
+        <div class="how-grid">
+          <div class="how-card">
+            <p>
+              Not sure which format fits your use case? The
+              <a href="/qr-code-types/">QR code types guide</a> covers text,
+              URL, email, phone, SMS, Wi-Fi, vCard, PDF, event and location
+              codes, with formatting tips and FAQs for each.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- ============ FOOTER ============ -->
     <footer class="site-footer">
       <div class="footer-inner">
         <p>&copy; <span id="footer-year"></span> QRGenPro.</p>
+        <nav aria-label="Footer">
+          <a href="/about.html">About</a> &middot;
+          <a href="/contact.html">Contact</a> &middot;
+          <a href="/legal/privacy-policy.html">Privacy</a> &middot;
+          <a href="/legal/terms-of-service.html">Terms</a> &middot;
+          <a href="/legal/disclaimer.html">Disclaimer</a>
+        </nav>
         <p class="footer-note">
           No data is stored or transmitted. Everything runs in your browser.
         </p>
@@ -776,7 +845,7 @@
     ></div>
 
     <!-- Libraries -->
-    <script src="js/qr-code-styling.js"></script>
-    <script src="js/script.js" defer></script>
+    <script src="/js/qr-code-styling.js" defer></script>
+    <script src="/js/script.js" defer></script>
   </body>
 </html>

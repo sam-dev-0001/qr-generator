@@ -1,5 +1,5 @@
 /**
- * QRSmith — QR Code Generator
+ * QRGenPro — QR Code Generator
  * Vanilla ES6+ module-style script (no build step, no framework).
  * Organized into small, single-purpose sections:
  *   1. State & constants
@@ -27,7 +27,6 @@
 
   const DEBOUNCE_MS = 350;
   const MAX_TEXT_LENGTH = 1500;
-  const THEME_STORAGE_KEY = 'qrsmith-theme'; // kept in-memory only, see note in initTheme()
 
   /* ============================================================
      2. DOM REFERENCES
@@ -434,22 +433,47 @@
       tab.addEventListener('click', () => {
         const { type } = tab.dataset;
         if (type === state.activeType) return;
-
-        dom.tabs.forEach((t) => {
-          t.classList.toggle('is-active', t === tab);
-          t.setAttribute('aria-selected', String(t === tab));
-        });
-        dom.panels.forEach((panel) => {
-          const isActive = panel.id === `fields-${type}`;
-          panel.classList.toggle('is-active', isActive);
-          panel.hidden = !isActive;
-        });
-
-        state.activeType = type;
-        clearFieldError();
-        debouncedGenerate();
+        activateType(type);
       });
     });
+  }
+
+  /**
+   * Activates a given content-type tab programmatically (used by both
+   * tab clicks and the ?type= deep-link handler below), keeping tab
+   * state, panel visibility and ARIA attributes in sync.
+   * @param {string} type
+   */
+  function activateType(type) {
+    const tab = dom.tabs.find((t) => t.dataset.type === type);
+    if (!tab) return;
+
+    dom.tabs.forEach((t) => {
+      t.classList.toggle('is-active', t === tab);
+      t.setAttribute('aria-selected', String(t === tab));
+    });
+    dom.panels.forEach((panel) => {
+      const isActive = panel.id === `fields-${type}`;
+      panel.classList.toggle('is-active', isActive);
+      panel.hidden = !isActive;
+    });
+
+    state.activeType = type;
+    clearFieldError();
+    debouncedGenerate();
+  }
+
+  /**
+   * Reads a `?type=` query parameter (e.g. from a QR-type landing page
+   * CTA like /?type=wifi#builder) and pre-selects that tab on load, so
+   * marketing/SEO pages can deep-link straight into the right form.
+   */
+  function initDeepLinkType() {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+    if (type && dom.tabs.some((t) => t.dataset.type === type)) {
+      activateType(type);
+    }
   }
 
   /** Wires up live-preview generation for all content inputs. */
@@ -667,6 +691,18 @@
     });
   }
 
+  /** Registers the service worker for offline support (production only). */
+  function initServiceWorker() {
+    if (!('serviceWorker' in navigator)) return;
+    // Skip on localhost/file preview so dev iteration isn't fighting a cache.
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch((err) => {
+        console.warn('Service worker registration failed:', err);
+      });
+    });
+  }
+
   /* ============================================================
      8. INIT
      ============================================================ */
@@ -686,6 +722,8 @@
     initFormActions();
     initTheme();
     initKeyboardShortcuts();
+    initDeepLinkType();
+    initServiceWorker();
   }
 
   if (document.readyState === 'loading') {

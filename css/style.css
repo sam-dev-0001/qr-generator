@@ -1,5 +1,5 @@
 /* ===================================================================
-   QRSmith — Application Stylesheet
+   QRGenPro — Application Stylesheet
    Design language: "scanner viewfinder" — ink/paper palette with a
    signal-amber accent, monospace display type paired with Inter body.
    =================================================================== */
@@ -904,13 +904,31 @@ input[type="color"] {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 6px 18px;
 }
 
 .footer-inner p {
   margin: 0;
   font-size: .82rem;
   color: var(--text-muted);
+}
+
+.footer-inner nav {
+  font-size: .82rem;
+  color: var(--text-muted);
+  flex-basis: 100%;
+  order: 3;
+  text-align: center;
+}
+
+.footer-inner nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.footer-inner nav a:hover {
+  color: var(--text);
+  text-decoration: underline;
 }
 
 /* -------------------- Toasts -------------------- */
@@ -1019,5 +1037,28 @@ input[type="color"] {
 
   .download-row .w3-button {
     width: 100%;
+  }
+}
+
+/* -------------------- Print (QR code should print cleanly) -------------------- */
+@media print {
+  .site-header,
+  .site-footer,
+  .builder-controls,
+  .hero,
+  .how,
+  .toast-region,
+  .skip-link {
+    display: none !important;
+  }
+
+  .builder-preview,
+  .preview-sticky {
+    position: static !important;
+  }
+
+  #viewfinder {
+    box-shadow: none;
+    border: none;
   }
 }

@@ -1,0 +1,4 @@
+Contact: mailto:security@qrgenpro.pages.dev
+Expires: 2027-07-19T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://qrgenpro.pages.dev/.well-known/security.txt

@@ -1,0 +1,13 @@
+/* TEAM */
+Site: QRGenPro
+Contact: hello [at] qrgenpro.pages.dev
+From: Earth
+
+/* SITE */
+Last update: 2026/07/19
+Language: English
+Doctype: HTML5
+IDE: —
+Standards: HTML5, CSS3, ES6+
+Components: qr-code-styling, W3.CSS
+Software: Cloudflare Pages

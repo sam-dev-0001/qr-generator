@@ -1,0 +1,45 @@
+# Cloudflare Pages custom headers file.
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# ---- Security headers (all routes) ----
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; frame-ancestors 'none'
+  # 'unsafe-inline' on script-src is needed because this static build uses
+  # inline <script type="application/ld+json"> blocks and small inline
+  # footer scripts with no build step to hash/nonce them. If you later add
+  # a build step, replace 'unsafe-inline' with per-deploy hashes or nonces
+  # for stronger protection.
+  # NOTE: once Google AdSense is approved and its script tag is added,
+  # extend script-src / connect-src / frame-src / img-src with the
+  # AdSense + related Google domains, e.g.:
+  #   script-src 'self' https://pagead2.googlesyndication.com https://adservice.google.com
+  #   frame-src https://googleads.g.doubleclick.net
+  #   connect-src ... https://pagead2.googlesyndication.com
+
+# ---- Long-cache immutable static assets ----
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/icons/*
+  Cache-Control: public, max-age=604800
+
+# ---- HTML: always revalidate so deploys show up immediately ----
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
